@@ -1,0 +1,11 @@
+<div class="player" #player>
+    <video (click)="playPause()" #video src="../../../assets/video/rick-astley-never-gonna-give-you-up.mp4" class="player__video" poster="https://cutt.ly/pCGqeiM"></video>
+    <div class="player__controls" *ngIf="player">
+        <button class="player__controls-play" (click)="playPause()">{{playPauseSymb}}</button>
+        <p class="player__controls-time" #videoDuration> <span *ngIf="video.duration">{{video.currentTime * 1000 | date: video.duration >= 3600 ? 'hh:mm:ss' : 'mm:ss' }} / {{ video.duration * 1000 | date: video.duration >= 3600 ? 'hh:mm:ss' : 'mm:ss' }}</span></p>
+        <input [value]="100 * video.currentTime / video.duration || 0" (click)="rewind($event)" type="range" class="player__controls-timeline" #timeline>
+        <button class="player__controls-volume" (click)="soundOnOff()">{{soundSymb}}</button>
+        <input (click)="changeVolume()" type="range" class="player__controls-volume-range" #volume>
+        <button class="player__controls-full-scr" (click)="fullScreen()">⛶</button>
+    </div>
+</div>

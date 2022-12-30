@@ -1,0 +1,11 @@
+<div class="rec">
+    <div *ngFor="let anime of animeRecs" class="rec__reccom">
+        <h2 class="rec__header">{{anime.content}}</h2>
+        <a *ngFor="let rec of anime.entry" [routerLink]="'/anime/'+ rec.mal_id" class="rec__anime-link">
+            <div class="rec__anime-wrap">
+                <img [src]="rec.images.jpg.large_image_url" alt="RecPoster" class="rec__pic">
+                <h2 class="rec__title">{{rec.title}}</h2>
+            </div>
+        </a>
+    </div>
+</div>

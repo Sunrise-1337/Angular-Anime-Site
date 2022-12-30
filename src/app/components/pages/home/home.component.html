@@ -1,0 +1,34 @@
+<div class="container">
+    <app-slider></app-slider>
+    <div class="home">
+        <div class="home__top-anime">
+            <div class="home__top-anime-top-wrap">
+                <span class="home__top-anime-span"></span>
+                <h2 class="home__top-anime-header">Trending now</h2>
+            </div>
+            <div *ngFor="let anime of topAnimes" class="home__anime-wrap">
+                <a [routerLink]="'anime/' + anime.mal_id" class="home__anime-link">
+                    <div class="home__anime-pic-wrap">
+                        <img [src]="anime.images.jpg.large_image_url" alt="AnimePoster" class="home__anime-pic">
+                        <h2 class="home__anime-type">{{anime.type}}</h2>
+                        <h2 class="home__anime-fav">♥ {{anime.favorites}}</h2>
+                    </div>
+                    <div class="home__anime-theme-wrap">
+                        <h5 *ngFor="let topic of anime.themes" class="home__anime-topic">{{topic.name}}</h5>
+                    </div>
+                    <h4 class="home__anime-name">{{anime.title_english ? anime.title_english : anime.title}}</h4>
+                </a>
+            </div>
+        </div>    
+        <div class="home__top-char">
+            <div class="home__top-char-top-wrap">
+                <span class="home__top-char-span"></span>
+                <h2 class="home__top-char-header">Top Characters</h2>
+            </div>
+            <div *ngFor="let char of topCharacters" class="home__char-wrap">
+                <img [src]="char.images.jpg.image_url" alt="CharacterPoster" class="home__char-pic">
+                <h2 class="home__char-name">{{char.name}}</h2>
+            </div>
+        </div>
+    </div>
+</div>

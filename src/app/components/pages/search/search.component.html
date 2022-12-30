@@ -1,0 +1,12 @@
+<div class="search container">
+    <a *ngFor="let anime of animes" [routerLink]="'../anime/' + anime.mal_id" class="search__anime-link">
+        <div class="search__anime">
+            <img src={{anime.images.jpg.large_image_url}} alt="Anime-poster" class="search__anime-pic">
+            <div class="search__anime-text">
+                <h2 class="search__anime-header">{{anime.title}}</h2>
+                <p class="search__anime-desc">{{anime.synopsis}}</p>
+            </div>
+        </div>
+    </a>
+    <h2 *ngIf="!animes.length" class="search__no-res">No results found</h2>
+</div>

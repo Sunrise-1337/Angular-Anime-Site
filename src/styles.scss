@@ -1,1 +1,78 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./normalize.scss";
+
+*, html, body{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    font-family: "Mulish", sans-serif;
+}
+
+html{
+    overflow-x: hidden;
+}
+
+body{
+    min-height: 100vh;
+    background: #0b0c2a;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+
+app-root{
+    display: contents;
+}
+
+app-slider{
+    margin: 25px 0;
+    max-width: 93%;
+    position: relative;
+}
+
+app-footer{
+    margin-top: auto;
+}
+
+app-auth{
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+app-error{
+    margin: auto;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1170px;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.followed{
+    background-color: #e53637 !important;
+}
+
+@media (max-width: 1023px){
+    app-slider{
+        max-width: 81%;
+    }
+}
+
+
+@media (max-width: 767px){
+    app-slider{
+        max-width: 70%;
+        min-width: 400px;
+    }
+}

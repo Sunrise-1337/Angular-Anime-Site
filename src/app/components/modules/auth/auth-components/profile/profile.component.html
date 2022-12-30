@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="profile">
+        <div class="profile__user">
+            <a (click)="logOut()" class="profile__user-logout">Log Out</a>
+            <img class="profile__user-pic" src="https://cutt.ly/4ViE9ff" alt="profile__user-pic-https://cutt.ly/4ViE9ff">
+            <div class="profile__user-login">{{user.login}}</div>
+        </div>
+        <div class="profile__favs">
+            <div class="profile__favs-top-wrap">
+                <span class="profile__favs-span"></span>
+                <h2 class="profile__favs-header">Your favourites</h2>
+            </div>
+            <div class="profile__favs-wrap" *ngFor="let anime of user.favourites" >
+                <div (click)="deleteFromFavs($event, anime.name)" class="profile__favs-like">
+                    <img class="profile__favs-like-pic" src="../../../../../../assets/images/deleteCross.png" alt="profile__favs-like-pic-https://cutt.ly/jVohlRo">
+                </div>
+                <a class="profile__favs-anime" [routerLink]="'../../anime/' + anime.id">
+                    <img class="profile__favs-anime-image" [src]="anime.src" alt="AnimePoster">
+                    <h2 class="profile__favs-anime-header">{{anime.name}}</h2>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="singleAnime-wrap container" *ngIf="pageIsReady">
+    <div class="anime">
+        <div class="anime__info">
+            <img src={{animeData.images.jpg.large_image_url}} alt="Poster" class="anime__info-pic">
+            <div class="anime__info-text">
+                <div class="anime__info-text-top">
+                    <div class="anime__info-text-titles">
+                        <h2 class="anime__info-text-title">{{animeData.title_english ? animeData.title_english : animeData.title}}</h2>
+                        <h3 class="anime__info-text-sub-title">{{animeData.title_japanese}}</h3>
+                    </div>
+                    <div *ngIf="animeData.score" class="anime__info-text-score">
+                        <h3 class="anime__info-score-rate">{{animeData.score}}/10</h3>
+                        <p class="anime__info-score-users">By {{animeData.scored_by}} users</p>
+                    </div>
+                </div>
+                <p class="anime__info-desc">{{animeData.synopsis}}</p>
+                <div class="anime__info-categ">
+                    <ul class="anime__info-categ-list">
+                        <li class="anime__info-categ-item">
+                            <span class="anime__info-categ-span">Type:</span> {{animeData.type}}
+                        </li>
+                        <li class="anime__info-categ-item">
+                            <span class="anime__info-categ-span">Studio:</span> {{getString(animeData.studios)}}
+                        </li>
+                        <li class="anime__info-categ-item">
+                            <span class="anime__info-categ-span">Genres:</span> {{getString(animeData.genres)}}
+                        </li>
+                        <li *ngIf="getString(animeData.themes)" class="anime__info-categ-item">
+                            <span class="anime__info-categ-span">Themes:</span> {{getString(animeData.themes)}}
+                        </li>
+                    </ul>
+                    <ul class="anime__info-categ-list">
+                        <li class="anime__info-categ-item">
+                            <span class="anime__info-categ-span">Status:</span> {{animeData.status}}
+                        </li>
+                        <li *ngIf="animeData.airing" class="anime__info-categ-item">
+                            <span class="anime__info-categ-span">New episodes on {{animeData.broadcast.string}}</span>
+                        </li>
+                        <li class="anime__info-categ-item">
+                            <span class="anime__info-categ-span">Data aired:</span> {{animeData.aired.string}}
+                        </li>
+                        <li class="anime__info-categ-item">
+                            <span class="anime__info-categ-span">Duration:</span> {{animeData.duration}}
+                        </li>
+                        <li  *ngIf="animeData.favorites" class="anime__info-categ-item">
+                            <span class="anime__info-categ-span">Favourite of {{animeData.favorites}} users</span> 
+                        </li>
+                    </ul>
+                </div>
+                <button (click)="toggleFav()" [ngClass]="{'followed': isFav}" class="anime__info-add">♥ Favourites</button>
+            </div>
+        </div>
+    </div>
+    <app-player></app-player>
+    <app-recommendations [id]="id"></app-recommendations>
+</div>  

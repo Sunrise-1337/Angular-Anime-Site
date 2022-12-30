@@ -1,0 +1,51 @@
+<header class="header">
+    <div class="container header__org">
+        <div class="header__wrap">
+            <nav class="header__logo-nav">
+                <a routerLink="" class="header__logo-wrap">
+                    <img src="../../../assets/images/logo.png" alt="Logo" class="header__logo">
+                </a>
+            </nav>
+            <nav class="header__pages-wrap">
+                <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="header__link">Homepage</a>
+                <a routerLink="anime" routerLinkActive="active" class="header__link">Anime</a>
+            </nav>
+        </div>
+        <div class="header__right-side">
+            <div class="header__search-wrap">
+                <div class="header__form" role="search">
+                    <input type="text" class="header__search" placeholder="Search" #searchRequest>
+                </div>
+                <div routerLink="search" (click)="search(searchRequest.value)">
+                    <img src="../../../assets/images/search.png" alt="Search" class="header__search-icon">
+                </div>
+            </div>
+            <nav class="header__prof-nav">
+                <a routerLink="auth" class="header__prof-link">
+                    <img src="../../../assets/images/prof.png" alt="Profile" class="header__prof">
+                </a>
+            </nav>
+            <div class="header__mob-btn" (click)="changeMenuVisibility()">
+                Menu
+                <img src="../../../assets/images/ham.png" alt="Ham" class="header__mob-pic">
+            </div>
+            <div (click)="changeMenuVisibility()" class="header__mob-close" [hidden]="menuHidden">
+                <nav class="container header__mob-nav">
+                    <img src="../../../assets/images/cross.png" alt="Cross" class="header__mob-exit">
+                    <ul class="header__mob-menu">
+                        <li class="header__mob-li">
+                            <a routerLink="" class="header__mob-link">
+                                <p class="header__mob-link-text">Homepage</p>
+                            </a>
+                        </li>
+                        <li class="header__mob-li">
+                            <a routerLink="anime" class="header__mob-link">
+                                <p class="header__mob-link-text">Anime</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>

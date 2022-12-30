@@ -1,0 +1,20 @@
+<div class="auth" *ngIf="login && registration">
+    <div class="auth__log">
+        <form (ngSubmit)="toLogIn(login)" [formGroup]="login" class="auth__log-form">
+            <h2 class="auth__log-head">Log In</h2>
+            <input formControlName="login" class="auth__log-name" type="text" placeholder="Your login">
+            <input formControlName="password" class="auth__log-pass" type="password" placeholder="Password">
+            <button [disabled]="login.invalid" [style.backgroundColor]="login.invalid ? 'gray' : null" type="submit" class="auth__log-btn">Submit</button>
+        </form>
+        <p *ngIf="logInNote" class="auth__log-warn">{{logInNote}}</p>
+    </div>
+    <div class="auth__reg">
+        <form (ngSubmit)="toRegister(registration)" [formGroup]="registration" class="auth__reg-form">
+            <h2 class="auth__reg-head">Register</h2>
+            <input formControlName="login" class="auth__reg-name" type="text" placeholder="Your login">
+            <input formControlName="password" class="auth__reg-pass" type="password" placeholder="Password">
+            <button [disabled]="registration.invalid" [style.backgroundColor]="registration.invalid ? 'gray' : null" type="submit" class="auth__reg-btn">Submit</button>
+        </form>
+        <p *ngIf="regNote" class="auth__reg-warn">{{regNote}}</p>
+    </div>
+</div>

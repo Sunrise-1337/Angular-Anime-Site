@@ -1,0 +1,36 @@
+<div class="wrap" *ngIf="config.items && config.items.length === 3">
+    <ng-carousel class="carousel" #carouselRef="ngCarousel" [config]="config">
+        <ng-template [ngCarouselSlide]="carouselRef" let-anime>
+            <div *ngIf="anime" class="carousel__slide">
+                <img class="carousel__pic" [src]="anime.images.jpg.large_image_url" alt="SlidePoster" class="carousel__pic">
+                <div class="carousel__text-wrap">
+                    <div (click)="showContent()" *ngIf="checkRating(anime.rating)" class="carousel__hide">
+                        <h3 class="carousel__hide-header">NSFW content</h3>
+                        <p class="carousel__hide-para">Do you want to allow it?</p>
+                    </div>
+                    <h2 class="carousel__header">{{anime.title_english ? anime.title_english : anime.title}}</h2>
+                    <p class="carousel__para">{{anime.synopsis ? shortenDesc(anime.synopsis) : ''}}</p>
+                    <a [routerLink]="'anime/' + anime.mal_id" class="carousel__link">
+                        <button class="carousel__btn">Watch ></button>
+                    </a>
+                </div>
+            </div>
+        </ng-template>
+    </ng-carousel>
+    <div class="nav">
+        <div (click)="prevSlide()" class="nav__button prev">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M15 3l-9 9 9 9"></path>
+            </svg>
+        </div>
+        <div (click)="nextSlide()" class="nav__button next">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M9 3l9 9-9 9"></path>
+            </svg>
+        </div>
+    </div>
+    <ol class="dots">
+        <li *ngFor="let dot of config.items; let index = index" (click)="chooseSlide(index)" [class.active]="getActiveSlide() === index" class="dots__dot">
+        </li>
+    </ol>
+</div>

@@ -1,0 +1,220 @@
+.carousel{
+    &__text-wrap{
+        padding: 0 10%;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: left;
+    }
+
+    &__slide{
+        position: relative;
+        z-index: 1;
+        max-height: 630px;
+        height: 70vh;
+        display: flex;
+        align-items: center;
+        background-color: #121444;
+    }
+
+    &__pic{
+        height: 100%;
+        max-width: 50%;
+        object-fit: cover;
+    }
+
+    &__header{
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+
+    &__para{
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+
+    &__btn{
+        height: 35px;
+        color: white;
+        background-color: #e53637;
+        font-weight: bold;
+        border-radius: 15px;
+        width: 150px;
+        cursor: pointer;
+    }
+
+    &__hide{
+        text-align: center;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        color: white;
+        background-color: #121444;
+        font-weight: bold;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        h3{
+            font-size: 70px;
+        }
+
+        p{
+            font-size: 50px;
+        }
+    }
+}
+
+.nav{
+    &__button{
+        box-sizing: content-box;
+        width:48px;
+        height:48px;
+        padding:0;
+        border:0;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        pointer-events:all;
+        cursor:pointer;
+        color:var(--carousel-button-color, currentColor);
+        background:darkgray;
+        border: 7px solid #0b0c2a;
+        border-radius:0;
+        box-shadow:var(--carousel-button-shadow, none);
+        transition:opacity .15s ease;
+    }
+    
+    &__button.prev,&__button.next{
+        position:absolute;
+        top:48%;
+    }
+    
+    &__button.prev{
+        left:0px;
+        transform: translateY(-50%) translateX(-50%) rotate(45deg)
+    }
+    
+    &__button.next{
+        right:0px;
+        transform: translateY(-50%) translateX(50%) rotate(45deg)
+    }
+    
+    &__button[disabled]{
+        cursor:default;opacity:.3
+    }
+    
+    &__button svg{
+        color: white;
+        width:var(--carousel-button-svg-width, 50%);
+        height:var(--carousel-button-svg-height, 50%);
+        fill:none;
+        stroke:currentColor;
+        stroke-width:var(--carousel-button-svg-stroke-width, 1.5);
+        stroke-linejoin:bevel;
+        stroke-linecap:round;
+        filter:var(--carousel-button-svg-filter, none);
+        pointer-events:none;
+        transform: rotate(-45deg);
+    }
+}
+
+.wrap{
+    display: contents;
+}
+
+.dots{
+    margin:0 auto;
+    padding:0;
+    position:absolute;
+    top:calc(100% + 0.5rem);
+    left:0;
+    right:0;
+    display:flex;
+    justify-content:center;
+    list-style:none;
+    user-select:none;
+    height: 22px;
+
+    &__dot{
+        margin:0;
+        padding:0;
+        display:block;
+        position:relative;
+        width:22px;
+        height:22px;
+        cursor:pointer
+    }
+
+    &__dot:after{
+        content:"";
+        width:8px;
+        height:8px;
+        border-radius:50%;
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%);
+        background-color: white;
+        opacity:.25;
+        transition:opacity .15s ease-in-out
+    }
+
+    &__dot.active:after{
+        opacity:1
+    }
+}
+
+
+
+@media (max-width: 1023px){
+    .carousel__slide{
+        height: 60vh;
+    }
+
+    .carousel__text-wrap{
+        padding: 0 48px 0 20px;
+    }
+    
+    .carousel__slide .pic{
+        height: 60vh;
+    }
+
+    .carousel__header{
+        font-size: 30px;
+    }
+
+    .carousel__para{
+        font-size: 15px;
+    }
+}
+
+
+@media (max-width: 767px){
+    .nav__button{
+        width:40px;
+        height: 40px;
+    }
+
+    .carousel__slide{
+        height: 50vh;
+    }
+    
+    .carousel__slide .pic{
+        height: 50vh;
+    }
+
+    .carousel__header{
+        font-size: 20px;
+    }
+
+    .carousel__para{
+        font-size: 13px;
+    }
+}

@@ -14,6 +14,7 @@ It has working system of authorization, implemented via localStorage, and follow
 
 https://docs.api.jikan.moe
 
+# Details
 
 This project was generated with Angular CLI version 14.2.6.
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`

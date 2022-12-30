@@ -10,6 +10,9 @@ It has working system of authorization, implemented via localStorage, and follow
 - Authorization Page (Reactive Forms)
 - Profile Page (available after registration)
 
+# Used API
+
+https://docs.api.jikan.moe
 
 
 This project was generated with Angular CLI version 14.2.6.

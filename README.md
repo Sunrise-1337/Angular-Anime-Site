@@ -10,7 +10,7 @@ It has working system of authorization, implemented via localStorage, and follow
 - Authorization Page (Reactive Forms)
 - Profile Page (available after registration)
 
-#Changes
+# Changes
 Now all the observables work not with subsciption, but via async pipe (with the exception for slider, due to it being side library)
 On SingleAnime page i've implemented Smart-Dumb component concept. The SingleAnimeComponent fills in as smart one, and Reccomendation Component represents the dumb one
 

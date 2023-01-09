@@ -1,4 +1,4 @@
-<div class="singleAnime-wrap container" *ngIf="pageIsReady">
+<div class="singleAnime-wrap container" *ngIf="isReady && (animeData$ | async) as animeData">
     <div class="anime">
         <div class="anime__info">
             <img src={{animeData.images.jpg.large_image_url}} alt="Poster" class="anime__info-pic">
@@ -52,5 +52,5 @@
         </div>
     </div>
     <app-player></app-player>
-    <app-recommendations [id]="id"></app-recommendations>
+    <app-recommendations (changePage)="onChangePage()" [recs]="recsData$ | async"></app-recommendations>
 </div>  

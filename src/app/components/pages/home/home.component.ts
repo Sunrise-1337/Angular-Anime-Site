@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { map, Observable } from 'rxjs';
 
 import { AnimeInterface } from 'src/app/interfaces/anime-interface';
 import { CharacterInterface } from 'src/app/interfaces/character-interface';
 import { CharactersResponseInterface } from 'src/app/interfaces/charactersResponse-interface';
-import { ServerResponseInterface } from 'src/app/interfaces/serverResponse-interface';
 import { AnimeApiService } from 'src/app/services/anime-api.service';
 
 @Component({
@@ -12,14 +12,17 @@ import { AnimeApiService } from 'src/app/services/anime-api.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  topAnimes: AnimeInterface[] = [];
-  topCharacters: CharacterInterface[] = [];
+  topAnimes$!: Observable<AnimeInterface[]>;
+  topCharacters$!: Observable<CharacterInterface[]>;
 
   constructor(private animeService: AnimeApiService) { }
 
   ngOnInit(): void {
-    this.animeService.getTopAnimes().subscribe((res: ServerResponseInterface) => this.topAnimes = res.data.slice(0, 18))
-    this.animeService.getTopCharacters().subscribe((res: CharactersResponseInterface) => this.topCharacters = res.data.slice(0, 4))
+    this.topAnimes$ = this.animeService.getTopAnimes().pipe(
+      map(res => res.data.slice(0, 18))
+    )
+    this.topCharacters$ = this.animeService.getTopCharacters().pipe(
+      map((res: CharactersResponseInterface) => res.data.slice(0, 4))
+    )
   }
-
 }

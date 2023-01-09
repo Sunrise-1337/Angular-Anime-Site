@@ -1,0 +1,15 @@
+<div *ngIf="favs" class="profile__favs">
+    <div class="profile__favs-top-wrap">
+        <span class="profile__favs-span"></span>
+        <h2 class="profile__favs-header">Your favourites</h2>
+    </div>
+    <div class="profile__favs-wrap" *ngFor="let anime of favs" >
+        <div (click)="deleteFav($event, anime.name)" class="profile__favs-like">
+            <img class="profile__favs-like-pic" src="../../../../../../assets/images/deleteCross.png" alt="profile__favs-like-pic-https://cutt.ly/jVohlRo">
+        </div>
+        <a class="profile__favs-anime" [routerLink]="'../../anime/' + anime.id">
+            <img class="profile__favs-anime-image" [src]="anime.src" alt="AnimePoster">
+            <h2 class="profile__favs-anime-header">{{anime.name}}</h2>
+        </a>
+    </div>
+</div>

@@ -5,7 +5,12 @@
     padding-bottom: 30px;
     gap: 45px;
 
+    &__wrap{
+        display: contents
+    }
+
     &__no-res{
+        justify-self: center;
         color: white;
         font-size: 70px;
         margin-top: 50px;

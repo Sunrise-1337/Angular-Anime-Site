@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { CarouselComponent, CarouselConfig } from 'ng-carousel-cdk';
+import { first } from 'rxjs';
 
 import { AnimeInterface } from 'src/app/interfaces/anime-interface';
 import { RandomAnimeResponseInterface } from 'src/app/interfaces/randomAnimeResponse-interface';
@@ -10,7 +11,7 @@ import { AnimeApiService } from 'src/app/services/anime-api.service';
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss']
 })
-export class SliderComponent implements OnInit {
+export class SliderComponent implements OnInit, AfterViewChecked {
   hideContent: boolean = true;
 
   @ViewChild(CarouselComponent) carouselRef!: CarouselComponent;
@@ -21,14 +22,20 @@ export class SliderComponent implements OnInit {
     dragEnabled: false,
   };
 
-  constructor(private service: AnimeApiService) { }
+  constructor(private service: AnimeApiService, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     for (let i = 0; i < 3; i++) {
-      this.service.getRandomAnimes().subscribe((res: RandomAnimeResponseInterface) => {
-        this.config.items?.push(res.data)
-      })
+      this.service.getRandomAnimes().pipe(first()).subscribe(
+        (res: RandomAnimeResponseInterface) => {
+          this.config.items?.push(res.data);
+        }
+      )
     }
+  }
+
+  ngAfterViewChecked(): void{
+    this.cdRef.detectChanges()
   }
 
   checkRating(arg: string): boolean{

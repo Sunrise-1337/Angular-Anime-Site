@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { map, Observable, switchMap } from 'rxjs';
 import { AnimeInterface } from 'src/app/interfaces/anime-interface';
-import { ServerResponseInterface } from 'src/app/interfaces/serverResponse-interface';
 import { AnimeApiService } from 'src/app/services/anime-api.service';
 
 @Component({
@@ -10,18 +10,20 @@ import { AnimeApiService } from 'src/app/services/anime-api.service';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  animes: AnimeInterface[] = [];
+  animes$!: Observable<AnimeInterface[]>;
   request: string = "";
 
   constructor (private route: ActivatedRoute, private animeService: AnimeApiService) { }
 	
   ngOnInit(): void {
-    this.route.queryParams.subscribe((res) => {
-      this.animeService
-        .getSearchResults(res['request'])
-        .subscribe((response: ServerResponseInterface) => {
-          this.animes = response.data
-        })
-    })
+    this.animes$ = this.route.queryParams.pipe(
+      switchMap(res => 
+        this.animeService
+          .getSearchResults(res['request'])
+          .pipe(
+            map(res => res.data)
+          )
+      )
+    )
   }
 }

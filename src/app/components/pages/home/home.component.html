@@ -1,7 +1,7 @@
 <div class="container">
     <app-slider></app-slider>
     <div class="home">
-        <div class="home__top-anime">
+        <div *ngIf="topAnimes$ | async as topAnimes" class="home__top-anime">
             <div class="home__top-anime-top-wrap">
                 <span class="home__top-anime-span"></span>
                 <h2 class="home__top-anime-header">Trending now</h2>
@@ -20,7 +20,7 @@
                 </a>
             </div>
         </div>    
-        <div class="home__top-char">
+        <div *ngIf="topCharacters$ | async as topCharacters" class="home__top-char">
             <div class="home__top-char-top-wrap">
                 <span class="home__top-char-span"></span>
                 <h2 class="home__top-char-header">Top Characters</h2>

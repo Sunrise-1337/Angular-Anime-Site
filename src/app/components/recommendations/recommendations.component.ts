@@ -1,8 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { RecInterface } from 'src/app/interfaces/rec-interface';
-import { RecsResponseInterface } from 'src/app/interfaces/recsResponse-interface';
-
-import { AnimeApiService } from 'src/app/services/anime-api.service';
 
 @Component({
   selector: 'app-recommendations',
@@ -10,13 +7,16 @@ import { AnimeApiService } from 'src/app/services/anime-api.service';
   styleUrls: ['./recommendations.component.scss']
 })
 export class RecommendationsComponent implements OnInit {
-  recs: RecInterface[] = [];
-  @Input() id!: string;
+  @Input() recs!: RecInterface[] | null;
+  @Output() changePage: EventEmitter<string> = new EventEmitter;
 
-  constructor(private service: AnimeApiService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.service.getRecomendations(this.id).subscribe((res: RecsResponseInterface) => this.recs = res.data.slice(0,4))
+  }
+
+  toChangePage() {
+    this.changePage.emit('')
   }
 
 }

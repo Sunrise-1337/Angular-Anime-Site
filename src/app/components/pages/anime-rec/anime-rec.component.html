@@ -1,5 +1,5 @@
 <div class="rec">
-    <div *ngFor="let anime of animeRecs" class="rec__reccom">
+    <div *ngFor="let anime of animeRecs$ | async" class="rec__reccom">
         <h2 class="rec__header">{{anime.content}}</h2>
         <a *ngFor="let rec of anime.entry" [routerLink]="'/anime/'+ rec.mal_id" class="rec__anime-link">
             <div class="rec__anime-wrap">

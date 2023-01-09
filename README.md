@@ -1,27 +1,24 @@
 # Animesite
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
+This project contains such Angular Features as: Reactive Forms, HTTP, Lazy-loading, usage of library, Guard, async pipe and Rxjs Observable operators. Also there is an original player, made via Angular.
 
-## Development server
+It has working system of authorization, implemented via localStorage, and following pages:
+- Home Page
+- Anime Page
+- Anime Details Page (information about certain anime and recomendations, if present)
+- Search Page (accessible through search bar in header)
+- Authorization Page (Reactive Forms)
+- Profile Page (available after registration)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+#Changes
+Now all the observables work not with subsciption, but via async pipe (with the exception for slider, due to it being side library)
+On SingleAnime page i've implemented Smart-Dumb component concept. The SingleAnimeComponent fills in as smart one, and Reccomendation Component represents the dumb one
 
-## Code scaffolding
+# Used API
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+https://docs.api.jikan.moe
 
-## Build
+# Details
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+This project was generated with Angular CLI version 14.2.6.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`
